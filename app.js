@@ -1,4 +1,8 @@
-const Express = require("express");
-const express = Express.express;
+const express = require("express");
+const app = express();
+const routes = require('./routes/routes.js');
 
-console.log("wow");
+app.use(routes);
+
+console.log("wow!");
+app.listen(5001);
