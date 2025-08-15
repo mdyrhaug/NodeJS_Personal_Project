@@ -1,10 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const controllers = require('../controllers/showAddRecipeForm.js');
 
-router.get('/', function (req, res) {
-    console.log("hello");
-    req.write("Hello");
-})
-
+router.get('/', controllers.showAddRecipeForm);
 
 module.exports = router;
