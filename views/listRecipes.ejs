@@ -6,11 +6,13 @@
     <title><%= pageTitle %></title>
 </head>
 <body>
-<form action="/add" method="post">
-    <label>
-        <input type="text" name="recipeName" placeholder="RecipeName"></input>
-    </label><br>
-    <input type="submit" value="Submit"/>
-</form>
+
+<h1>Iterate Recipes Here.</h1>
+<ul>
+    <% recipes.forEach(function(item) { %>
+        <li><%= item %></li>
+    <% }); %>
+</ul>
+<a href="/">Add New Recipe</a>
 </body>
 </html>

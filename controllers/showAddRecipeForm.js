@@ -1,11 +1,15 @@
 const path = require("path");
 const Recipe = require("../models/recipe");
+const recipes = [];
+
 
 exports.showAddRecipeForm = function (req, res) {
     console.log("hello");
-    res.render("addRecipe.ejs");
+    res.render("addRecipe.ejs",{"pageTitle":"Add Recipe"});
 };
 
 exports.addRecipe = function (req, res) {
-  recipe.push(req.name);
+  recipes.push(req.body.recipeName);
+  console.log(recipes);
+    res.render("listRecipes.ejs",{"pageTitle":"Fetch Recipes","recipes":recipes});
 };
