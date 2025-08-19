@@ -8,6 +8,10 @@ exports.showAddRecipeForm = function (req, res) {
     res.render("addRecipe.ejs",{"pageTitle":"Add Recipe"});
 };
 
+exports.listRecipes = function (req, res) {
+   res.render("listRecipes.ejs",{"pageTitle":"Fetch Recipes","recipes":recipes});
+};
+
 exports.addRecipe = function (req, res) {
   recipes.push(req.body.recipeName);
   console.log(recipes);

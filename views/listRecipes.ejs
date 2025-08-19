@@ -1,11 +1,8 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><%= pageTitle %></title>
+    <%- include('includes/head.ejs') %>
+
 </head>
 <body>
+    <%- include('includes/navigation.ejs') %>
 
 <h1>Iterate Recipes Here.</h1>
 <ul>
@@ -13,6 +10,5 @@
         <li><%= item %></li>
     <% }); %>
 </ul>
-<a href="/">Add New Recipe</a>
 </body>
 </html>
