@@ -3,6 +3,7 @@ const router = express.Router();
 const controllers = require('../controllers/showAddRecipeForm.js');
 
 router.get('/', controllers.showAddRecipeForm);
-router.post('/add', controllers.addRecipe);
+router.use('/add', controllers.addRecipe);
+router.get('/list', controllers.listRecipes);
 
 module.exports = router;
