@@ -9,7 +9,11 @@ exports.showAddRecipeForm = function (req, res) {
 };
 
 exports.addRecipe = function (req, res) {
-  recipes.push(req.body.recipeName);
-  console.log(recipes);
-    res.render("listRecipes.ejs",{"pageTitle":"Fetch Recipes","recipes":recipes});
+  const recipe = (new Recipe(req.body.recipeName));
+  console.log("name received: " + req.body.recipeName);
+    console.log("name saved: " + recipe.title);
+
+  recipe.save();
+  console.log(Recipe.fetchAll());
+    res.render("listRecipes.ejs",{"pageTitle":"Fetch Recipes","recipes":Recipe.fetchAll()});
 };

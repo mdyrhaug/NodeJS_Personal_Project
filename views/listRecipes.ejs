@@ -1,16 +1,10 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><%= pageTitle %></title>
-</head>
+<%- include('includes/header.ejs') %>
 <body>
 
 <h1>Iterate Recipes Here.</h1>
 <ul>
     <% recipes.forEach(function(item) { %>
-        <li><%= item %></li>
+        <li><%= item.title %></li>
     <% }); %>
 </ul>
 <a href="/">Add New Recipe</a>
