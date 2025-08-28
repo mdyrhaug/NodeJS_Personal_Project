@@ -1,0 +1,19 @@
+<%- include('includes/header.ejs') %>
+</head>
+<body>
+<%- include('includes/navigation.ejs') %>
+
+<h1>Edit the Recipe</h1>
+<ul>
+    <form action="/update" method="post">
+        <label>
+            <input type="text" name="title" placeholder="Title" value="<%= recipe.title %>"></input>
+            <input type="text" name="numOfIngredients" placeholder="Number of Ingredients" value="<%= recipe.numOfIngredients %>"></input>
+            <input type="text" name="calories" placeholder="Calories" value="<%= recipe.calories %>"></input>
+        </label><br>
+        <input type="submit" value="Submit"/>
+    </form>
+</ul>
+<%- include('includes/footer.ejs') %>
+</body>
+</html>

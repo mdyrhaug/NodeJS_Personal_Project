@@ -2,11 +2,14 @@
 </head>
 <body>
     <%- include('includes/navigation.ejs') %>
-<form action="/add" method="post">
-    <label>
-        <input type="text" name="recipeName" placeholder="RecipeName"></input>
-    </label><br>
-    <input type="submit" value="Submit"/>
-</form>
+    <form action="/add" method="post">
+        <label>
+            <input type="text" name="title" placeholder="Title"></input>
+            <input type="text" name="numOfIngredients" placeholder="Number of Ingredients"></input>
+            <input type="text" name="calories" placeholder="Calories"></input>
+        </label><br>
+        <input type="submit" value="Submit"/>
+    </form>
+    <%- include('includes/footer.ejs') %>
 </body>
 </html>
