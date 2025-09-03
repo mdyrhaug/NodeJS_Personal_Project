@@ -6,7 +6,7 @@
     <h1>Iterate Recipes Here.</h1>
     <ul>
         <% recipes.forEach(function(item) { %>
-            <li><%= item.title %>,<%= item.numOfIngredients %>, <%= item.calories %> - <a href="/addToMealPlan/<%= item.id %>">Add To Meal Plan</a> - <a href="/edit/<%= item.id %>">Edit</a></li>
+            <li><%= item.title %>,<%= item.summary %>, <%= item.author %> - <a href="/addToMealPlan/<%= item.id %>">Add To Meal Plan</a> - <a href="/edit/<%= item.id %>">Edit</a></li>
         <% }); %>
     </ul>
     <%- include('includes/footer.ejs') %>

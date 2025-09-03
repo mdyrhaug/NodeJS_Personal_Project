@@ -8,10 +8,6 @@ const app = express();
 app.set("view engine", "ejs");
 app.set("views", "views");
 
-db.execute('SELECT * FROM RECIPES')
-    .then((result) => {console.log(result)})
-    .catch(err => {console.log(err)});
-
 app.use(bodyParser.urlencoded({extended: false}));
 app.use('/', router);
 

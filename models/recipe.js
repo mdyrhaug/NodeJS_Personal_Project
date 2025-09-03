@@ -1,15 +1,20 @@
+const db = require("../utils/database.js");
 const recipes = [];
 
 module.exports = class Recipe {
-    constructor(title, numOfIngredients, calories) {
+    constructor(title, summary, author) {
         this.title = title;
-        this.numOfIngredients = numOfIngredients;
-        this.calories = calories;
+        this.summary = summary;
+        this.author = author;
     }
 
     save () {
         this.id = Math.random().toString();
         recipes.push(this);
+    }
+
+    static deleteById(id) {
+
     }
 
     static findById(id, cb) {
@@ -18,6 +23,6 @@ module.exports = class Recipe {
     }
 
     static fetchAll() {
-        return recipes;
+        return db.execute('SELECT * FROM recipes');
     }
 }
