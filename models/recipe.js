@@ -1,5 +1,4 @@
 const db = require("../utils/database.js");
-const recipes = [];
 
 module.exports = class Recipe {
     constructor(title, summary, author) {
@@ -10,7 +9,7 @@ module.exports = class Recipe {
 
     save () {
         this.id = Math.random().toString();
-        recipes.push(this);
+        return db.execute('INSERT INTO recipes (id, title, summary, author) values (?,?,?,?)', [this.id, this.title, this.summary, this.author]);    
     }
 
     static deleteById(id) {

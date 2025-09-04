@@ -2,7 +2,7 @@ const path = require("path");
 const Recipe = require("../models/recipe");
 
 exports.showAddRecipeForm = function (req, res) {
-    console.log("hello");
+    console.log("Showing index  (add recipe form)");
     res.render("addRecipe.ejs",{"pageTitle":"Add Recipe"});
 };
 
@@ -16,9 +16,11 @@ exports.editRecipe = function (req, res) {
 
 exports.listRecipes = function (req, res) {
     const recipes = Recipe.fetchAll()
-        .then()
+        .then(([rows, fieldData]) => {
+            console.log("Listing Recipes.")
+            res.render("listRecipes.ejs",{"pageTitle":"Fetch Recipes","recipes":rows});
+        })
         .catch(err => {console.log(err)});
-    res.render("listRecipes.ejs",{"pageTitle":"Fetch Recipes","recipes":recipes[0]});
 }
 
 exports.addToMealPlan = function (req, res) {
@@ -35,10 +37,16 @@ exports.showMealPlan = function (req, res) {
 
 exports.addRecipe = function (req, res) {
     title = req.body.title;
-    numOfIngredients = req.body.numOfIngredients;
-    calories = req.body.calories;
-    const recipe = (new Recipe(title, numOfIngredients, calories));
-    recipe.save();
-    console.log(Recipe.fetchAll());
-    res.render("listRecipes.ejs",{"pageTitle":"Fetch Recipes","recipes":Recipe.fetchAll()});
+    summary = req.body.summary;
+    author = req.body.author;
+    console.log("from form,  title: " + title + ", summary: "+ summary +", author: "+author);
+    const recipe = (new Recipe(title, summary, author));
+    recipe.save()
+    .then(() => {
+        console.log("added new recipe.  redirecting to list.")
+        res.redirect("/list");
+    })
+        .catch(err => {
+        console.log(err);
+    });
 };
