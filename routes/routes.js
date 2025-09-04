@@ -8,5 +8,6 @@ router.get('/list', controllers.listRecipes);
 router.get('/edit/:id', controllers.editRecipe);
 router.get('/addToMealPlan/:id', controllers.addToMealPlan);
 router.get('/showMealPlan', controllers.showMealPlan);
+router.use('/update', controllers.update);
 
 module.exports = router;

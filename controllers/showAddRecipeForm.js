@@ -8,11 +8,26 @@ exports.showAddRecipeForm = function (req, res) {
 
 exports.editRecipe = function (req, res) {
     const id = req.params.id;
-    Recipe.findById(id, recipe => {
-        console.log(recipe);
-        res.render("recipe.ejs",{"pageTitle":"Edit Recipe","recipe":recipe});
-    });
-};
+    Recipe.findById(id)
+        .then(([recipe]) => {
+            console.log("should be loaded.");
+            console.log(recipe[0]);
+            res.render('recipe.ejs',{'pageTitle':"Edit Recipe",'recipe':recipe[0]});
+        })
+        .catch(err => {
+            console.log(err);
+        });
+}
+
+exports.update = function (req, res) {
+    id = req.body.id;
+    title = req.body.title;
+    summary = req.body.summary;
+    author = req.body.author;
+    console.log("from form,  title: " + title + ", summary: "+ summary +", author: "+author);
+    Recipe.update(id, title, summary, author);
+    res.redirect("/");
+}
 
 exports.listRecipes = function (req, res) {
     const recipes = Recipe.fetchAll()

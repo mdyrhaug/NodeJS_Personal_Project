@@ -7,9 +7,10 @@
 <ul>
     <form action="/update" method="post">
         <label>
+            <input type="hidden" name = "id" value="<%= recipe.id %>"></input>"
             <input type="text" name="title" placeholder="Title" value="<%= recipe.title %>"></input>
-            <input type="text" name="numOfIngredients" placeholder="Number of Ingredients" value="<%= recipe.numOfIngredients %>"></input>
-            <input type="text" name="calories" placeholder="Calories" value="<%= recipe.calories %>"></input>
+            <input type="text" name="summary" placeholder="Summary" value="<%= recipe.summary %>"></input>
+            <input type="text" name="author" placeholder="Author" value="<%= recipe.author %>"></input>
         </label><br>
         <input type="submit" value="Submit"/>
     </form>

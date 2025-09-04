@@ -12,13 +12,16 @@ module.exports = class Recipe {
         return db.execute('INSERT INTO recipes (id, title, summary, author) values (?,?,?,?)', [this.id, this.title, this.summary, this.author]);    
     }
 
+    static update(id, title, summary, author) {
+        return db.execute("UPDATE recipes set title = ?, summary = ?, author = ? where id = ?", [title, summary, author, id]);
+    }
+
     static deleteById(id) {
 
     }
 
-    static findById(id, cb) {
-        const recipe = recipes.find(r => r.id === id);
-        cb(recipe);
+    static findById(id) {
+        return db.execute('SELECT * From recipes where id = ?',[id]);
     }
 
     static fetchAll() {
